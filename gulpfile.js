@@ -9,6 +9,7 @@ const notify = require('gulp-notify');
 const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
 const concat = require('gulp-concat');
+const historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('styles', () => {
 	return gulp.src('./src/styles/**/*.scss')
@@ -18,7 +19,7 @@ gulp.task('styles', () => {
 });
 
 gulp.task('js', () => {
-	browserify('src/scripts/app.js', {debug: true})
+	browserify('src/scripts/Index.js', {debug: true})
 		.transform('babelify', {
 			sourceMaps: true,
 			presets: ['es2015','react']
@@ -28,19 +29,21 @@ gulp.task('js', () => {
 			message: "Error: <%= error.message %>",
 			title: 'Error in JS 💀'
 		}))
-		.pipe(source('app.js'))
+		.pipe(source('Index.js'))
 		.pipe(buffer())
 		.pipe(gulp.dest('public/scripts'))
 		.pipe(reload({stream:true}));
 });
 
 gulp.task('bs', () => {
-	browserSync.init({
-		server: {
-			baseDir: './'
-		}
-	});
+    browserSync.init({
+        server: {
+            baseDir: './'
+        },
+        middleware: [historyApiFallback()] // <-- this line
+    });
 });
+
 
 gulp.task('default', ['js','bs', 'styles'], () => {
 	gulp.watch('src/**/*.js',['js']);
