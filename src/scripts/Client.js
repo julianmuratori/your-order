@@ -2,6 +2,8 @@ import React from 'react';
 import AddItem from './AddItem';
 import Inventory from './Inventory';
 import ClientItem from './ClientItem';
+import OrderCard from './OrderCard';
+import OrderTotal from './OrderTotal';
 
 class Client extends React.Component {
 
@@ -24,7 +26,20 @@ class Client extends React.Component {
         </div>
         <div className="client50 orderList">
           <h3>Order Summary</h3>
-        </div>
+          {
+            Object
+            .keys(this.props.orderItems)
+            .map(key => <OrderCard itemKey={key}
+                          key={key}
+                          orderItems={this.props.orderItems}
+                          details={this.props.orderItems[key]}
+                          />)
+          }
+          <div>
+            <h4>Your Total</h4>
+            <OrderTotal orderItems={this.props.orderItems}/>
+          </div>
+       </div>
       </div>
     )
   }

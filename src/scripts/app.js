@@ -112,6 +112,7 @@ console.log(newOrder);
     const ClientSide = (props) => {
       return (
         <Client inventoryItems={this.state.inventoryItems}
+          orderItems={this.state.order}
           addItem={this.addItem}
           removeItem={this.removeItem}
           addOne = {this.addOne}
