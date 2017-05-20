@@ -118,6 +118,7 @@ class App extends React.Component {
           <hr/>
           <Route exact path="/banana" render={ClientSide}/>
           <Route exact path="/apple" render={Supplies}/>
+          <ClientSide />
         </div>
       </div>
       </Router>

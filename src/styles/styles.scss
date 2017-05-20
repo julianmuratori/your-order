@@ -136,3 +136,21 @@ header {
   margin: 3px 0;
   background: $formBackground;
 }
+
+// Client side styling
+.clientContainer {
+  display: flex;
+}
+
+.client50 {
+  width: 50%;
+  border: 1px solid black;
+}
+
+.item-price-availability {
+  display: flex;
+  
+  div {
+    width: 50%;
+  }
+}
