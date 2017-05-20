@@ -16,7 +16,9 @@ class Client extends React.Component {
               .keys(this.props.inventoryItems)
               .map(key => <ClientItem itemKey={key}
                           key={key}
-                          inventoryItems={this.props.inventoryItems} details={this.props.inventoryItems[key]} />)
+                          inventoryItems={this.props.inventoryItems}
+                          addToOrder={this.props.addToOrder}
+                           details={this.props.inventoryItems[key]} />)
             }
           </div>
         </div>

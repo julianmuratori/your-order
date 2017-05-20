@@ -4,7 +4,21 @@ class ClientItem extends React.Component {
 
   addToOrder(e) {
     e.preventDefault();
-    console.log(this.quantity.value);
+    const quantity = this.quantity.value;
+    if (isNaN(quantity) || quantity > this.props.details.quantity || quantity === "") {
+      console.log("nope")
+    } else {
+      const item = {
+        quantity: quantity,
+        name: this.props.details.name,
+        price: this.props.details.price,
+        priceStyle: this.props.details.priceStyle,
+        notes: this.props.details.notes,
+        key: this.props.itemKey
+      }
+      this.props.addToOrder(item);
+    }
+
   }
 
   render() {
