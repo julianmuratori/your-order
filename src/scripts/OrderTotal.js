@@ -9,20 +9,21 @@ class OrderTotal extends React.Component {
   		// let cost = 0;
       const order = () => {
         const orderItem = this.props.orderItems;
+        let cost = 0;
         Object.keys(orderItem)
           .map(key => {
-            let cost = 0;
             parseInt(orderItem[key].quantity);
             let multiplier = (orderItem[key].price * orderItem[key].quantity);
-            // cost = (this.props.orderItems[key].price + cost);
-            // console.log(multiplier);
+            return cost = multiplier + cost;
           })
+        return cost;
         }
-        order();
+        // order();
+        return order().toFixed(2);
   	}
     return (
       <div>
-        <h5>{total()}</h5>
+        <h5>${total()}</h5>
       </div>
     )
   }

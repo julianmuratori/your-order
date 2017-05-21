@@ -23,11 +23,18 @@ class App extends React.Component {
 			inventoryItems: {
 				item1: {
 					name: "apple",
-					price: 1,
+					price: 11,
 					priceStyle: "pc",
-					quantity: 4,
+					quantity: 477,
 					notes: "Tastes great"
-				}
+				},
+        item2: {
+          name: "banana",
+          price: 13,
+					priceStyle: "pc",
+					quantity: 477,
+					notes: "Tastes bad"
+        }
 			},
 			order: {}
 		};
@@ -69,35 +76,33 @@ class App extends React.Component {
         inventoryItems: newItems
       })
     }
+
     // adds a single quantity number to a count
     addOne(item) {
       const newItems = this.state.inventoryItems;
-      // newItems[item] = Number.parseInt(newItems[item])
       newItems[item].quantity = parseInt(newItems[item].quantity);
       newItems[item].quantity = (newItems[item].quantity + 1);
-      // console.log(newItems[item])
       this.setState({
         inventoryItems: newItems
       })
     }
 
+    // Adds a selected item to checkout basket
     addToOrder(item) {
       const newItems = this.state.inventoryItems;
       const newOrder = this.state.order;
       newItems[item.key].quantity = (newItems[item.key].quantity) - (item.quantity);
 
+
+      // Maps over state and checks to see if item already exists
+      // If it does, it adds previous order quantity to new order quantity
       Object.keys(newOrder)
       .map(key => {
         if (key === item.key) {
-          console.log(newOrder[key].quantity);
-          console.log(item.quantity);
           item.quantity = ((newOrder[key].quantity*1) + (item.quantity*1));
-          console.log(item.quantity);
         }
       })
-      // console.log(newOrder[item.key]);
       newOrder[item.key] = item;
-      // console.log(newOrder[item.key]);
 
       this.setState({
         inventoryItems: newItems,
