@@ -75,7 +75,7 @@ class App extends React.Component {
       // newItems[item] = Number.parseInt(newItems[item])
       newItems[item].quantity = parseInt(newItems[item].quantity);
       newItems[item].quantity = (newItems[item].quantity + 1);
-      console.log(newItems[item])
+      // console.log(newItems[item])
       this.setState({
         inventoryItems: newItems
       })
@@ -85,9 +85,20 @@ class App extends React.Component {
       const newItems = this.state.inventoryItems;
       const newOrder = this.state.order;
       newItems[item.key].quantity = (newItems[item.key].quantity) - (item.quantity);
-      console.log(item);
+
+      Object.keys(newOrder)
+      .map(key => {
+        if (key === item.key) {
+          console.log(newOrder[key].quantity);
+          console.log(item.quantity);
+          item.quantity = ((newOrder[key].quantity*1) + (item.quantity*1));
+          console.log(item.quantity);
+        }
+      })
+      // console.log(newOrder[item.key]);
       newOrder[item.key] = item;
-console.log(newOrder);
+      // console.log(newOrder[item.key]);
+
       this.setState({
         inventoryItems: newItems,
         order: newOrder
