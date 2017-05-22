@@ -2,6 +2,11 @@ import React from 'react';
 
 class OrderCard extends React.Component {
 
+  removeItem(e) {
+    const item = this.props.itemKey;
+    this.props.deleteFromOrder(item);
+  }
+
   render() {
     const itemCost = (this.props.details.quantity * this.props.details.price).toFixed(2);
 
@@ -9,6 +14,7 @@ class OrderCard extends React.Component {
       <div>
         <div>
           <h6>{this.props.details.name}</h6>
+          <button onClick={(e) => this.removeItem(e)}>Remove Item</button>
         </div>
         <div>
           <div><h5>{this.props.details.quantity}<span>{this.props.details.priceStyle}</span></h5></div>

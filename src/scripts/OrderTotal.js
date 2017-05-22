@@ -5,9 +5,7 @@ class OrderTotal extends React.Component {
 
   render() {
 
-  	const total = () => {
-  		// let cost = 0;
-      const order = () => {
+    const order = () => {
         const orderItem = this.props.orderItems;
         let cost = 0;
         Object.keys(orderItem)
@@ -18,12 +16,10 @@ class OrderTotal extends React.Component {
           })
         return cost;
         }
-        // order();
-        return order().toFixed(2);
-  	}
+
     return (
       <div>
-        <h5>${total()}</h5>
+        <h5>${order().toFixed(2)}</h5>
       </div>
     )
   }

@@ -31,6 +31,7 @@ class Client extends React.Component {
             .keys(this.props.orderItems)
             .map(key => <OrderCard itemKey={key}
                           key={key}
+                          deleteFromOrder={this.props.deleteFromOrder}
                           orderItems={this.props.orderItems}
                           details={this.props.orderItems[key]}
                           />)

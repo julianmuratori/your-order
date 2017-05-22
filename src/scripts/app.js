@@ -17,6 +17,7 @@ class App extends React.Component {
 		this.removeOne = this.removeOne.bind(this);
 		this.addOne = this.addOne.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+    this.deleteFromOrder = this.deleteFromOrder.bind(this);
 
 		// get initial state
 		this.state = {
@@ -110,6 +111,23 @@ class App extends React.Component {
       })
     }
 
+    deleteFromOrder(item) {
+      const newOrder = this.state.order;
+      const newItems = this.state.inventoryItems;
+
+      // Takes the deleted item's quantity on the order summary and adds it back to inventory
+      newItems[item].quantity = ((newItems[item].quantity * 1) + (newOrder[item].quantity * 1));
+
+      // Deletes the item from the order summary
+      delete newOrder[item];
+
+      this.setState({
+        inventoryItems: newItems,
+        order: newOrder
+      })
+
+    }
+
 
 
   render() {
@@ -134,6 +152,7 @@ class App extends React.Component {
           addOne = {this.addOne}
           removeOne = {this.removeOne}
           addToOrder = {this.addToOrder}
+          deleteFromOrder = {this.deleteFromOrder}
            {...props}
         />
       );
