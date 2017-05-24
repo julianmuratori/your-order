@@ -9,27 +9,13 @@ import Supplier from "./Supplier";
 import Client from "./Client";
 
 
-// const Banana = () => {
-//   return (
-//     <BrowserRouter>
-//       <div>
-//       <Match exactly pattern="/" component={Login} />
-//       {/* <Match pattern="/store/:storeId" component={App} /> */}
-//       </div>
-//     </BrowserRouter>
-//   )
-// }
-
-// ReactDOM.render(<Root />, document.querySelector('#main'));
-
-
-
 render((<BrowserRouter>
       <div>
         <Switch>
-        <Route exact path="/" component={App}/>
-        <Route path="/store/:storeId" component={App}>
-          {/* <Route path="/apple" component={Supplier}></Route> */}
+        <Route exact path="/" component={Login}/>
+          <Route path="/store/:storeId" component={App}>
+          <Route path="/apple" component={Supplier}></Route>
+          <Route path="/banana" component={Client}></Route>
         </Route>
         </Switch>
       </div>

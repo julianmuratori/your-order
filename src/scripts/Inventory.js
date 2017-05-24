@@ -44,7 +44,7 @@ class Inventory extends React.Component {
                 <textarea className="notes" type="text" name="notes" value={this.props.details.desc}/>
               </div>
               <div className="deleteInventoryItem">
-                <a href="" className="closeButton" onClick={ (e) => this.removeItem(e)}><i className="fa fa-times"></i></a>
+                <a href="" className="button" onClick={ (e) => this.removeItem(e)}><i className="fa fa-times"></i></a>
               </div>
             </div>
           </li>

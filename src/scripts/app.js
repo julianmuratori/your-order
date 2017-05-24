@@ -1,11 +1,21 @@
 import React from 'react';
+import Rebase from 're-base';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Supplier from './Supplier';
 import Login from './Login';
 import Client from './Client';
-import base from '../base';
+//
+var config = firebase.initializeApp({
+    apiKey: "AIzaSyA22fBCLdmM35T0euWTbHKh9O1NwYV1ipo",
+    authDomain: "inventory-app-c7991.firebaseapp.com",
+    databaseURL: "https://inventory-app-c7991.firebaseio.com",
+    projectId: "inventory-app-c7991",
+    storageBucket: "inventory-app-c7991.appspot.com",
+    messagingSenderId: "489240017107"
+  });
 
+const base = Rebase.createClass(config.database());
 
 class App extends React.Component {
   constructor() {
@@ -21,25 +31,22 @@ class App extends React.Component {
 
 		// get initial state
 		this.state = {
-			inventoryItems: {
-				item1: {
-					name: "apple",
-					price: 11,
-					priceStyle: "pc",
-					quantity: 477,
-					notes: "Tastes great"
-				},
-        item2: {
-          name: "banana",
-          price: 13,
-					priceStyle: "pc",
-					quantity: 477,
-					notes: "Tastes bad"
-        }
-			},
+			inventoryItems: {},
 			order: {}
 		};
 	}
+
+componentWillMount() {
+    this.ref = base.syncState(`${this.props.match.params.storeId}/inventoryItems`,
+    {
+      context: this,
+      state: 'inventoryItems'
+    });
+}
+
+componentWillUnmount() {
+  base.removeBinding(this.ref);
+}
 
 
 
@@ -166,11 +173,11 @@ class App extends React.Component {
             <div className="navLinks"><li><h2><Link to="/apple">Supplier</Link></h2></li></div>
             <div className="navLinks"><li><h2><Link to="/banana">Client</Link></h2></li></div>
           </ul>
+          </div>
           {/* <hr/> */}
           <Route exact path="/banana" render={ClientSide}/>
           <Route exact path="/apple" render={Supplies}/>
-          <ClientSide />
-        </div>
+          {/* <ClientSide /> */}
       </div>
       </Router>
     )
