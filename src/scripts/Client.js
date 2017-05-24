@@ -12,7 +12,7 @@ class Client extends React.Component {
       <div className="clientContainer">
         <div className="client50 productList">
           <h3>Items Available</h3>
-          <div>
+          <div className="productList-Cards">
             {
               Object
               .keys(this.props.inventoryItems)
@@ -24,21 +24,23 @@ class Client extends React.Component {
             }
           </div>
         </div>
-        <div className="client50 orderList">
+        <div className="client50">
           <h3>Order Summary</h3>
-          {
-            Object
-            .keys(this.props.orderItems)
-            .map(key => <OrderCard itemKey={key}
-                          key={key}
-                          deleteFromOrder={this.props.deleteFromOrder}
-                          orderItems={this.props.orderItems}
-                          details={this.props.orderItems[key]}
-                          />)
-          }
-          <div>
-            <h4>Your Total</h4>
-            <OrderTotal orderItems={this.props.orderItems}/>
+          <div className="orderList orderCard-Container">
+            {
+              Object
+              .keys(this.props.orderItems)
+              .map(key => <OrderCard itemKey={key}
+                            key={key}
+                            deleteFromOrder={this.props.deleteFromOrder}
+                            orderItems={this.props.orderItems}
+                            details={this.props.orderItems[key]}
+                            />)
+            }
+            <div className="">
+              <h4>Your Total</h4>
+              <OrderTotal orderItems={this.props.orderItems}/>
+            </div>
           </div>
        </div>
       </div>

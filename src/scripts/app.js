@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Supplier from './Supplier';
 import Login from './Login';
 import Client from './Client';
-
+import base from '../base';
 
 
 class App extends React.Component {
@@ -160,13 +160,13 @@ class App extends React.Component {
 
     return (
       <Router>
-      <div className="mainSplash">
-        <div className="splashOptions">
+      <div>
+        <div className="nav">
           <ul>
-            <li><Link to="/apple">Supplier</Link></li>
-            <li><Link to="/banana">Client</Link></li>
+            <div className="navLinks"><li><h2><Link to="/apple">Supplier</Link></h2></li></div>
+            <div className="navLinks"><li><h2><Link to="/banana">Client</Link></h2></li></div>
           </ul>
-          <hr/>
+          {/* <hr/> */}
           <Route exact path="/banana" render={ClientSide}/>
           <Route exact path="/apple" render={Supplies}/>
           <ClientSide />

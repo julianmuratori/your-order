@@ -25,13 +25,13 @@ class ClientItem extends React.Component {
     return (
       <div>
         <div className="itemContainer">
-          <div>
-            <h1>{this.props.details.name}</h1>
+          <div className="threeAcross">
+            <h4>{this.props.details.name}</h4>
           </div>
-          <div className="item-price-availability">
-            <div className="item-price"><p>${this.props.details.price}/{this.props.details.priceStyle}</p></div>
-            <div className="item-availability"><p>{this.props.details.quantity}</p></div>
-          </div>
+          {/* <div className="item-price-availability threeAcross"> */}
+            <div className="item-price threeAcross"><p>Cost : ${this.props.details.price}/{this.props.details.priceStyle}</p></div>
+            <div className="item-availability threeAcross"><p>Available: { this.props.details.quantity}</p></div>
+          {/* </div> */}
           <div className="item-notes">
             <p>Product Notes: {this.props.details.notes}</p>
           </div>
@@ -40,7 +40,7 @@ class ClientItem extends React.Component {
               <input type="text" placeholder="How Many?" ref={(input) => this.quantity = input}/>
             </div>
             <div className="item-ordering-submit">
-              <button type="submit">Add to Order</button>
+              <button type="submit" className="button">Add to Order</button>
             </div>
           </form>
         </div>

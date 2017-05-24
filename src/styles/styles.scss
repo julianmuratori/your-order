@@ -3,10 +3,61 @@ button,hr,input{overflow:visible}audio,canvas,progress,video{display:inline-bloc
 .clearfix:after { visibility: hidden; display: block; font-size: 0; content: ""; clear: both; height: 0;}
 
 $colorPrimary: #2c314f;
-$formBackground: #efeee9;
+$backgroundPrimary: rgb(6, 28, 63);
+$buttonPrimary: #F95C3C;
+$bodyColor: rgb(250, 251, 253);
+$fontPrimary: 'Open Sans', sans-serif;
 
-$fontPrimary: 'Montserrat', sans-serif;
-$fontSecondary: 'Lato', sans-serif;
+body {
+  background: $bodyColor;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.button {
+  background: $buttonPrimary;
+  padding: 5px 50px;
+  border: none;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
+h1 {
+  font-family: $fontPrimary;
+  font-size: 52px;
+}
+
+h2 {
+  font-family: $fontPrimary;
+  font-size: 32px;
+  font-weight: 300;
+}
+
+h3 {
+  font-family: $fontPrimary;
+  font-size: 26px;
+  font-weight: 300;
+}
+
+h4 {
+  font-family: $fontPrimary;
+  font-size: 18px;
+  margin: 0;
+}
+
+p {
+  font-family: $fontPrimary;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
 
 textarea, input, select {
   box-shadow: none;
@@ -20,6 +71,27 @@ select {
 .wrapper {
   width: 80%;
   margin: 0 auto;
+}
+
+.nav ul {
+  height: 20vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  background: $backgroundPrimary;
+
+  div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      background: $buttonPrimary;
+      padding: 5px 50px;
+    }
+  }
 }
 
 header {
@@ -134,7 +206,7 @@ header {
 
 .new-item-inputs {
   margin: 3px 0;
-  background: $formBackground;
+  background: $backgroundPrimary;
 }
 
 // Client side styling
@@ -144,13 +216,75 @@ header {
 
 .client50 {
   width: 50%;
-  border: 1px solid black;
+  text-align: center;
 }
 
-.item-price-availability {
+.productList-Cards {
+  background: $backgroundPrimary;
+  padding: 15px 0;
+}
+
+.itemContainer {
   display: flex;
-  
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 15px 5px;
+  background: $bodyColor;
+
+  div {
+    margin: 7px 0;
+  }
+
+}
+
+.threeAcross {
+  display: flex;
+  width: 33.3%;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-notes {
+  width: 100%;
+}
+
+.item-ordering {
+  display: flex;
+  width: 100%;
+
   div {
     width: 50%;
   }
+}
+
+.orderList {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  // background: $backgroundPrimary;
+}
+
+.orderCard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.orderCard-Container {
+  padding: 10px;
+  margin: 15px 5px;
+  background: $bodyColor;
+  width: 70%;
+  margin: 0 auto;
+
+  div {
+    margin: 7px 0;
+  }
+}
+
+.orderCard-Notes {
+  width: 100%;
+}
+.orderCard-Notes-Heading {
+  text-align: center;
+  margin-bottom: 5px;
 }

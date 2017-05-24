@@ -11,16 +11,25 @@ class OrderCard extends React.Component {
     const itemCost = (this.props.details.quantity * this.props.details.price).toFixed(2);
 
     return (
-      <div>
-        <div>
-          <h6>{this.props.details.name}</h6>
-          <button onClick={(e) => this.removeItem(e)}>Remove Item</button>
+      <div className="orderCard">
+        <div className="threeAcross">
+          <p>{this.props.details.name}</p>
         </div>
-        <div>
-          <div><h5>{this.props.details.quantity}<span>{this.props.details.priceStyle}</span></h5></div>
-          <div><h5>${itemCost}</h5></div>
+        <div className="threeAcross">
+          <p>{this.props.details.quantity}<span>{this.props.details.priceStyle}</span></p>
         </div>
-        <div><p>Notes: {this.props.details.notes}</p></div>
+        <div className="threeAcross">
+          <p>${itemCost}</p>
+        </div>
+        <div className="orderCard-Notes">
+          <div>
+            <p className="orderCard-Notes-Heading">Notes</p>
+            <p>{this.props.details.notes}</p>
+          </div>
+          <div>
+            <button className="button" onClick={(e) => this.removeItem(e)}>Remove?</button>
+          </div>
+        </div>
       </div>
     )
   }
