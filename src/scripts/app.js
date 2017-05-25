@@ -170,13 +170,13 @@ componentWillUnmount() {
       <div>
         <div className="nav">
           <ul>
-            <div className="navLinks"><li><h2><Link to="/apple">Supplier</Link></h2></li></div>
-            <div className="navLinks"><li><h2><Link to="/banana">Client</Link></h2></li></div>
+            <div className="navLinks"><li><h2><Link to={`/store/${this.props.match.params.storeId}/apple`}>Supplier</Link></h2></li></div>
+            <div className="navLinks"><li><h2><Link to={`/store/${this.props.match.params.storeId}/banana`}>Client</Link></h2></li></div>
           </ul>
           </div>
           {/* <hr/> */}
-          <Route exact path="/banana" render={ClientSide}/>
-          <Route exact path="/apple" render={Supplies}/>
+          <Route exact path={`/store/${this.props.match.params.storeId}/banana`} render={ClientSide}/>
+          <Route exact path={`/store/${this.props.match.params.storeId}/apple`} render={Supplies}/>
           {/* <ClientSide /> */}
       </div>
       </Router>

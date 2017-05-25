@@ -68,6 +68,29 @@ select {
   appearance: none;
 }
 
+.loginContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    border: 1px solid grey;
+    padding: 20px;
+    background: $backgroundPrimary;
+    color: white;
+    text-align: center;
+    width: 55%;
+  }
+
+  input {
+    padding: 5px;
+    margin: 0 5px;
+  }
+
+
+}
+
 .wrapper {
   width: 80%;
   margin: 0 auto;
@@ -159,7 +182,7 @@ header {
     }
 
     input {
-      width: 50%;
+      width: 95%;
       margin: 0 auto;
     }
   }
@@ -194,8 +217,16 @@ header {
   }
 
 .new-item {
-  width: 30%;
-  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+
+  div {
+    width: 50%;
+    background: $backgroundPrimary;
+    padding: 20px;
+  }
+
 
   form {
     display: flex;
@@ -206,7 +237,6 @@ header {
 
 .new-item-inputs {
   margin: 3px 0;
-  background: $backgroundPrimary;
 }
 
 // Client side styling

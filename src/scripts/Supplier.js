@@ -7,9 +7,6 @@ class Supplier extends React.Component {
   render() {
     return(
       <div>
-        <header>
-          {/* <h1>{this.props.storeName} - Current Inventory</h1> */}
-        </header>
         <div className="new-item">
           <AddItem addItem={this.props.addItem}/>
         </div>
